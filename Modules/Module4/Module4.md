@@ -179,7 +179,7 @@ s1 = "Hello Student! My name is Carlos Jose Cobián. I enjoy coding and video ga
 
 Capitalize every letter of ss1 using a function. Store it in a variable called SS1.
 
- - Answer: SS1 = SS1= ss1.upper()
+ - Answer: SS1 = ss1.upper()
 
 
 This last section is not worth any points, but is worth looking into. It is good string manipulation practice and contains exercises that you may see in a pop quiz! 
