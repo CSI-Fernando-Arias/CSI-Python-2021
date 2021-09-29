@@ -73,7 +73,7 @@ Give a python example for each logic operator in the module image.
  - Answers:
    - OR: 
    - AND: if(x== 32 and x<32)
-          print(the value of x is equal or less than 32)
+   - AND: 
    - NOT: if(x== 32 not x== 34)
           print(the value of x is 32)
 
