@@ -71,9 +71,10 @@ print(f"Computer selected: {computerChoice}")
 Give a python example for each logic operator in the module image.
 
  - Answers:
-   - OR: 
-   - AND: if(x== 32 and x<32)
-   - AND: 
+   - OR: if(x== 32 or x== 34)
+          print(the value of x is equal to 32 or equal to 34)
+   - AND: if(x== 32 and x< 34)
+          print(the value of x is equal to 32 or less than 34)
    - NOT: if(x== 32 not x== 34)
           print(the value of x is 32)
 
