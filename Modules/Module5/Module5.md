@@ -72,11 +72,12 @@ Give a python example for each logic operator in the module image.
 
  - Answers:
    - OR: if(x== 32 or x== 34)
-          print(the value of x is equal to 32 or equal to 34)
+          print(the value of x is equal to 32 or equal to 34) it prints because the value of x is 32 or 34
+
    - AND: if(x== 32 and x< 34)
-          print(the value of x is equal to 32 or less than 34)
-   - NOT: if(x== 32 not x== 34)
-          print(the value of x is 32)
+          print(the value of x is equal to 32 or less than 34) it prints because x is equal to 32 or less than 34.
+   - NOT: if((not x== 32) and x== 34)
+          print(the value of x is 34) it prints because the value of x is not 32 it is 34.
 
 
 Type down any class notes below this sentence:
