@@ -1,7 +1,20 @@
 import math
+import os
 from ExperimentData import ExperimentData
+from pathlib import Path
+import json
+
+
+#gun = "AK-74"
+    #cartridge = "5.45x39mm"
+    #ammunition= "5.45x39mm PPBS gs"
+    #velocity = 905
+    #buildingName = "Minillas North Tower"
+    #  #buildingHeight = 72.85
 
 def experiment(experimentData:ExperimentData):
+
+
 
     #Calculate the time that the bullet will fly for
     time = (math.sqrt(2 * experimentData.buildingHeight)/9.8)
@@ -19,7 +32,19 @@ def experiment(experimentData:ExperimentData):
 #  "buildingHeight" : 72.85
 #  }
 
-myData = ExperimentData("AK-74", "5.45x39mm", "5.45x39mm PPBS gs", 905, "Minillas North Tower", 72.85)
+myDataSet =[
 
+    ExperimentData("AK-74", "5.45x39mm", "5.45x39mm PPBS gs", 905, "Minillas North Tower", 72.85, 9.8),
+    ExperimentData("MP5", "9x19mm Parabellum", "9x19mm PBP gzh", 560, "Minillas North Tower", 72.85, 9.8),
+    ExperimentData("SKS", "7.62x39mm", "7.62x39mm BP gzh", 730, "Minillas North Tower", 72.85, 9.8),
+    ExperimentData("M4A1", "5.56x45mm NATO", "5.56x45mm FMJ", 957, "Minillas North Tower", 72.85, 9.8),  
+    ExperimentData("SV-98", "7.62x54mmR", "7.62x54R BT gzh", 820, "Minillas North Tower", 72.85, 9.8)
+]
 
-experiment(myData)
+experiment(myDataSet[1])
+
+myOutputPath = Path(__file__).parents[0]
+myOutputFilePath = os.path.join(myOutputPath, 'ExperimentData.json')
+
+with open(myOutputFilePath, 'w') as outfile:
+    json.dump(myDataSet[1].__dict__, outfile)
