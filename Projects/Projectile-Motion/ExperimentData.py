@@ -24,7 +24,7 @@ class ExperimentData:
         return g_ms2[planets.index(self.planet)]
 
     def run(self):
-        print(f"The weapon i choose was {self.gun} and the cartridge of the gun is {self.cartridge}. This cartridge has this type of ammunition {self.ammunition}, the velocity of this ammunition is {self.velocity}m/s. The building I choose was {self.buildingName} and it has a height of {self.buildingHeight}m. The bullet will travel for this much time {self.getTime()} and for this distance {self.getDistance()}. There is no air resistance therefore it wont affect the time and distance it will travel.")
+        print(f"The weapon i choose was {self.gun} and the cartridge of the gun is {self.cartridge}. This cartridge has this type of ammunition {self.ammunition}, the velocity of this ammunition is {self.velocity}m/s. The building I choose was {self.buildingName} and it has a height of {self.buildingHeight}m. The bullet will travel for this much time {self.getTime()} and for this distance {self.getDistance()}. There is no air resistance therefore it wont affect the time and distance it will travel. It is being shot from {self.planet}")
 
 
 
