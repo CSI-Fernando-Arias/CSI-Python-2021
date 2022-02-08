@@ -27,9 +27,13 @@ for x in range(0,100):
         req = urllib.request.Request(dessertURL)
         requestData = json.loads(urllib.request.urlopen(req).read())
 
+#Loop over JSON items and Deserialize them into python objects
         for r in requestData:
+        #Deserialize
          dessert:RandomDessert = RandomDessert(**r)
+         #Add object to list
          desserts.append(dessert)
+         #Print id
          print(dessert.id)
          myOutputFilePath = os.path.join(myFilePath, f"{dessert.uid}.json")
 
