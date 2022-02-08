@@ -29,14 +29,14 @@ for x in range(0,100):
 
 #Loop over JSON items and Deserialize them into python objects
         for r in requestData:
-        #Deserialize
-         dessert:RandomDessert = RandomDessert(**r)
-         #Add object to list
-         desserts.append(dessert)
-         #Print id
-         print(dessert.id)
-         myOutputFilePath = os.path.join(myFilePath, f"{dessert.uid}.json")
+                #Deserialize
+                dessert:RandomDessert = RandomDessert(**r)
+                #Add object to list
+                desserts.append(dessert)
+                #Print id
+                print(dessert.id)
+                myOutputFilePath = os.path.join(myFilePath, f"{dessert.uid}.json")
 
-         with open(myOutputFilePath, 'w') as outfile:
-                json.dump(dessert.__dict__, outfile)
+                with open(myOutputFilePath, 'w') as outfile:
+                        json.dump(dessert.__dict__, outfile)
 
