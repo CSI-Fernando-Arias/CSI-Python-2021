@@ -5,8 +5,8 @@ import random
 word_list = ["Clue", "Life", "Jesuita", "Loyola", "Iglesia", "Buenos Aires", "Bogota", "Quito", "loops", "Fajardo", "Orocovis", "Isabela", "Rincon", "Gurabo", "Ponce", "Bayamon", "Cayey", "Monopolio", "string", "list", "float", "Arecibo", "Dorado", "Luquillo"]
 
 
-
-steps = ['''
+def display_hangman(tries):
+      steps = ['''
      |---|
          |
          |
@@ -43,6 +43,8 @@ steps = ['''
    / \  |
        ===''']
 
+      return steps[tries]
+
 
 
 def get_word(word_list):
@@ -62,6 +64,7 @@ def play(word):
    guessed_words = []
    tries = 6
    print("Lets play")
+   print(display_hangman(tries))
    print(word_completion)
    print("\n")
    while not guessed and tries > 0:
@@ -93,3 +96,16 @@ def play(word):
          else:
             guessed = True
             word_completion = word
+      else:
+         print("Invalid input")
+         print(display_hangman(tries))
+         print(word_completion)
+         print("\n")
+
+
+         if guessed:
+            print("Nice, you got the word correct!! :)")
+         else:
+            print("No more tries left. The correct word"+word+" Better luck next time.")
+
+         
