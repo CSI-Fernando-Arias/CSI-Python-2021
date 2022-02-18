@@ -1,3 +1,4 @@
+from curses.ascii import isalpha
 import random
 
 
@@ -43,6 +44,7 @@ steps = ['''
        ===''']
 
 
+
 def get_word(word_list):
    word = random.choice(word_list)
    return word.upper()
@@ -50,6 +52,7 @@ def get_word(word_list):
 
 def get_letter():
    letter = input("choose letter")
+   return letter
 
 
 def play(word):
@@ -80,3 +83,13 @@ def play(word):
             word_completion = "".join(word_as_list)
             if "_" not in word_completion:
                guessed = True
+      elif len(guess) == len(word) and guess.isalpha():
+         if guessed in guessed_words:
+            print("already tried that", guess, "!")
+         elif guess != word:
+            print(guess, "Not the word: (")
+            tries -= 1
+            guessed_letters.append(guess)
+         else:
+            guessed = True
+            word_completion = word
