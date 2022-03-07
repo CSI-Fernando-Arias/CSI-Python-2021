@@ -77,7 +77,7 @@ def play(word):
                 print("Already used that letter", guess, "!")
             elif guess not in word:
                 print(guess, "Not in the word")     
-                tries -= 1
+                tries -= 1                     #This adds another step to the hangman so it takes away a try.
                 guessed_letters.append(guess)
             else:                                                   
                 #This else is for when the user inserted a letter if it is not incorrect nor already used the it will be in the word selected
