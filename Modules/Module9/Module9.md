@@ -23,6 +23,9 @@
 > ipconfig /all
 ### [Public IP](https://www.ipchicken.com/)
 
+
+* subnet
+* Default gateway (eg. 192.168.0.1)
 <br><br>
 
 ## DNS and Routes
@@ -121,6 +124,7 @@
 
 ## Application Layer: 
 * [HTTP Request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
+* [URL](https://en.wikipedia.org/wiki/URL)
 
 <br><br>
 
