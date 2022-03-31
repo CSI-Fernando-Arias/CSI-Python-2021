@@ -5,30 +5,37 @@ import random
 pygame.init() #initialize the game 
  #These are all the color variables for the game
 white = (255, 255, 255)
+yellow = (255, 255, 102)
 black = (0, 0, 0)
-red = (255, 0, 0)
-blue = (0, 0, 255)
- #created and displays the game with its width height
-dis_width = 800
-dis_height = 600
+red = (213, 50, 80)
+green = (0, 255, 0)
+blue = (50, 153, 213)
+ #these two variables creates and displays the game with its with height
+dis_width = 600
+dis_height = 400
  
 dis = pygame.display.set_mode((dis_width, dis_height))
-pygame.display.set_caption('Snake Game by Edureka') #Adds the text to the display
+pygame.display.set_caption('Snake Game by Edureka') #Adds the text to the display 
  
 clock = pygame.time.Clock()
- #Variables for the display of the snake and the velocity of the snake
+ #Variables for the display of the snake and the velocity.
 snake_block = 10
-snake_speed = 30
+snake_speed = 15
  
-font_style = pygame.font.SysFont(None, 30) #the font of the texts used in the game.
+font_style = pygame.font.SysFont("bahnschrift", 25) #The font and type of letter used for the style of the game.
+score_font = pygame.font.SysFont("comicsansms", 35)#The font and type of letter used for the score.
+ #Here we use the draw rect function color the snake and know when it grows.
+def our_snake(snake_block, snake_list):
+    for x in snake_list:
+        pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
  
  
 def message(msg, color):
-    mesg = font_style.render(msg, True, color) #It colors you a text in the game
-    dis.blit(mesg, [dis_width/3, dis_height/3])
+    mesg = font_style.render(msg, True, color) #this colors you the text in the game.
+    dis.blit(mesg, [dis_width / 6, dis_height / 3])
  
  
-def gameLoop():  # creating a function for the game to loop
+def gameLoop(): #creating a function for the game to loop
     game_over = False
     game_close = False
  
@@ -37,20 +44,24 @@ def gameLoop():  # creating a function for the game to loop
  
     x1_change = 0
     y1_change = 0
+ 
+    snake_List = []
+    Length_of_snake = 1
  #This spawns the food that the snake need to eat to get bigger and win the game. 
-    foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0   #This makes sure that the food is not too big so it fits in the screen.
-    foody = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
-  # We create a wide loop to make the snake in game move.
+    foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+    #This makes sure that the food is not too big so it fits in the screen.
+    foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+   # We create a wide loop to make the snake in game move.
     while not game_over:
-        #This block creates a message so you are able to either quit or play again when you lose the game.
+  #This block creates a message so you are able to either quit or play again when you lose the game.
         while game_close == True:
-            dis.fill(white)
-            message("You Lost! Press Q-Quit or C-Play Again", red)
-            pygame.display.update()
+            dis.fill(blue) #By using the fill()method we change the display screen from its default black to blue.
+            message("You Lost! Press C-Play Again or Q-Quit", red)
+ 
+            pygame.display.update() #update the display 
  
             for event in pygame.event.get(): # We use the event.get() function so the game doesnt quit instantly when you run it.
-                #If you click a key it does its job and makes the game loop
-                if event.type == pygame.KEYDOWN:
+                if event.type == pygame.KEYDOWN:   #If you click a key it does its job and makes the game loop
                     if event.key == pygame.K_q:
                         game_over = True
                         game_close = False
@@ -64,28 +75,45 @@ def gameLoop():  # creating a function for the game to loop
                 if event.key == pygame.K_LEFT: #If you press the left key your x variable will be negative because it is moving left.
                     x1_change = -snake_block #negative because it is moving left.
                     y1_change = 0
-                elif event.key == pygame.K_RIGHT:  #If you press the right key your x variable will be positive because it is moving right.
+                elif event.key == pygame.K_RIGHT:#If you press the right key your x variable will be positive because it is moving right.
                     x1_change = snake_block #positive because it is moving right.
                     y1_change = 0
-                elif event.key == pygame.K_UP: #If you press the up key your x variable will be negative because it is moving up.
-                    y1_change = -snake_block #negative because it is moving up. 
+                elif event.key == pygame.K_UP:#If you press the up key your x variable will be negative because it is moving up.
+                    y1_change = -snake_block#negative because it is moving up. 
                     x1_change = 0
-                elif event.key == pygame.K_DOWN: #If you press the down key your x variable will be positive because it is moving down.
+                elif event.key == pygame.K_DOWN:#If you press the down key your x variable will be positive because it is moving down.
                     y1_change = snake_block #positive because it is moving down
                     x1_change = 0
  
         if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0:
             game_close = True
- 
         x1 += x1_change
         y1 += y1_change
-        dis.fill(white)#By using the fill()method we change the display screen from its default black to white.
-        pygame.draw.rect(dis, blue, [foodx, foody, snake_block, snake_block])#we use the draw.rect()function to display the snake which will be a rectangle with its desired measurements and color, also to display the width and height of the food.
-        pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block])#we use the draw.rect()function to display the snake which will be a rectangle with its desired measurements and color.
-        pygame.display.update()#updates the display of the game.
-        #the snake collects food ir prints yummy.
-        if x1 == foodx and y1 == foody:
-            print("Yummy!!")
+        dis.fill(blue) #By using the fill()method we change the display screen from its default black to blue.
+        pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block]) #we use the draw.rect()function to display the snake which will be a rectangle with its desired measurements and color, also to display the width and height of the food
+        #This block of code creates the snake, the length, the head ect.
+        snake_Head = []
+        snake_Head.append(x1)
+        snake_Head.append(y1)
+        snake_List.append(snake_Head)
+        if len(snake_List) > Length_of_snake:
+            del snake_List[0]
+ 
+        for x in snake_List[:-1]:
+            if x == snake_Head:
+                game_close = True
+ 
+        our_snake(snake_block, snake_List) #the snake in the game.
+ 
+ 
+        pygame.display.update() #updates the display of the game.
+ 
+        if x1 == foodx and y1 == foody:  #This spawns the food that the snake need to eat to get bigger and win the game. 
+            foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+            #This makes sure that the food is not too big so it fits in the screen.
+            foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+            Length_of_snake += 1 #Makes the length of the snake bigger when you collect food
+ 
         clock.tick(snake_speed)
  
     pygame.quit() #uninitialize the game
