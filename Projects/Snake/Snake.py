@@ -62,7 +62,7 @@ def gameLoop():  #creating a function for the game to loop
     while not game_over:
   #This block creates a message so you are able to either quit or play again when you lose the game.
         while game_close == True:
-            dis.fill(blue)#By using the fill()method we change the display screen from its default black to blue.
+            dis.fill(red)#By using the fill()method we change the display screen from its default black to blue.
             message("You Lost! Press C-Play Again or Q-Quit", red)
             Your_score(Length_of_snake - 1) #The length of the snake grows
             pygame.display.update() #updates the display of the game.
@@ -96,7 +96,7 @@ def gameLoop():  #creating a function for the game to loop
             game_close = True
         x1 += x1_change
         y1 += y1_change
-        dis.fill(blue)#By using the fill()method we change the display screen from its default black to blue.
+        dis.fill(red)#By using the fill()method we change the display screen from its default black to blue.
         pygame.draw.rect(dis, green, [foodx, foody, snake_block, snake_block]) #we use the draw.rect()function to display the snake which will be a rectangle with its desired measurements and color, also to display the width and height of the food
         snake_Head = []
         #This blovk of code is to create the snake 
